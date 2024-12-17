@@ -2,7 +2,13 @@ import { test, expect } from '@playwright/test';
 import fs from 'fs';
 import csv from 'csv-parser';
 
-const { login } = require('../Useful-folder/loginhelper');
+test.beforeEach(async ({ context }) => {
+  await context.clearCookies();
+  await context.clearPermissions();
+});
+
+
+const { login } = require('../../Useful-folder/loginhelper');
 
 // Helper function to read CSV file
 async function readCSV(filePath) {
@@ -16,12 +22,7 @@ async function readCSV(filePath) {
   });
 }
 
-test.beforeEach(async ({ context }) => {
-  await context.clearCookies();
-  await context.clearPermissions();
-});
-
-test('Credit card creation and verify in table', async ({ page }) => {
+test('credit card list bank filter dynamically from CSV', async ({ page }) => {
   const csvPath = 'D:\\Briq Playwright Automation\\Useful-folder\\creditcarddata.csv';
 
   // Step 1: Read CSV data
@@ -30,7 +31,7 @@ test('Credit card creation and verify in table', async ({ page }) => {
   console.log(`Total rows in CSV: ${testData.length}`);
 
   // Example: Select rows dynamically (filter for specific bank)
-  const selectedRows = testData.filter((row) => row.Bank === 'Comdata'); // Change the bank name to select the row.
+  const selectedRows = testData.filter((row) => row.Bank === 'Comdata'); //Change the bank name to select the row.
 
   if (selectedRows.length === 0) {
     console.error('No matching rows found for the given filter.');
@@ -38,7 +39,7 @@ test('Credit card creation and verify in table', async ({ page }) => {
   }
 
   // Step 2: Login
-  await login(page, 'BriqLiveCsv', 1);
+  await login(page, 'BriqDevCsv', 0);
 
   // Step 3: Navigate to the credit card section
   await page.getByRole('button', { name: 'Credit Cards' }).click();
@@ -46,7 +47,7 @@ test('Credit card creation and verify in table', async ({ page }) => {
   await page.getByRole('link', { name: 'Credit cards' }).click();
   await page.waitForTimeout(3000);
 
-  // Step 4: Loop through selected rows, create a credit card, and verify
+  // Step 4: Loop through selected rows and test dynamically
   for (const row of selectedRows) {
     console.log(`Testing row: ${JSON.stringify(row)}`);
 
@@ -77,38 +78,13 @@ test('Credit card creation and verify in table', async ({ page }) => {
     await page.getByRole('button', { name: 'Save Details' }).click();
     await page.waitForTimeout(1000);
 
-    // Validate success message (Optional)
+    /*
+    // Validation of success message
+    await expect(page.getByText('Success')).toBeVisible();
+    console.log(`Test Passed for Bank: ${row.Bank}, Card: ${row['Card Name']}`);
+    */
+
     await page.getByRole('button', { name: 'Continue' }).click();
-    await page.waitForTimeout(1000);
 
-    // Refresh the page to load the new credit card in the table
-    await page.reload();
-    await page.waitForTimeout(3500); // Wait for the page to reload completely
-
-    // Step 5: Verify the created credit card in the table
-    console.log(`Verifying credit card in the table for: Bank=${row.Bank}, Card Last 4 Digits=${row['Credit Card Number']}`);
-    
-    // Search the credit card in the list
-    await page.getByPlaceholder('Search card, Bank name').click();
-    await page.getByPlaceholder('Search card, Bank name').fill(row['Credit Card Number']);
-    await page.waitForTimeout(1500);
-
-    try {
-      // Wait for the table cell containing the searched text to appear
-      const cell = await page.getByRole('cell', { name: row['Credit Card Number'], exact: true });
-
-      // Check if the cell is visible
-      if (await cell.isVisible()) {
-        console.log(`Credit card found in the table: ${row['Credit Card Number']}`);
-      } else {
-        console.error(`Credit card not found in the table: ${row['Credit Card Number']}`);
-      }
-    } catch (error) {
-      console.error(`Credit card not found in the table: ${row['Credit Card Number']}`);
     }
-
-    // Clear the search input
-    await page.getByRole('button', { name: '' }).click(); // Clear search
-    await page.waitForTimeout(500);
-  }
 });
