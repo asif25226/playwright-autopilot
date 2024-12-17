@@ -1,0 +1,69 @@
+{
+  "cookies": [
+    {
+      "name": "_ga_B5CBFNGDW4",
+      "value": "GS1.1.1734169024.1.0.1734169024.60.0.0",
+      "domain": ".briq.com",
+      "path": "/",
+      "expires": 1768729024.896698,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_ga",
+      "value": "GA1.2.642418927.1734169025",
+      "domain": ".briq.com",
+      "path": "/",
+      "expires": 1768729025.782735,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_gid",
+      "value": "GA1.2.1726900991.1734169026",
+      "domain": ".briq.com",
+      "path": "/",
+      "expires": 1734255425,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_gat_gtag_UA_133603961_4",
+      "value": "1",
+      "domain": ".briq.com",
+      "path": "/",
+      "expires": 1734169085,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "test_cookie",
+      "value": "CheckForPermission",
+      "domain": ".doubleclick.net",
+      "path": "/",
+      "expires": 1734169925.967141,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://app-dev.briq.com",
+      "localStorage": [
+        {
+          "name": "ld:61a8dfcefbf6fe0e64ad387d:$diagnostics",
+          "value": "{\"dataSinceDate\":1734169052200,\"droppedEvents\":0,\"eventsInLastBatch\":0,\"streamInits\":[]}"
+        },
+        {
+          "name": "vuex",
+          "value": "{\"workbookParams\":{},\"user\":{\"autoSyncUsers\":{\"autoSyncUserStatus\":false,\"userSyncConfigured\":false},\"userData\":{\"isAdmin\":false,\"permissions\":{},\"userId\":\"\",\"company\":\"\",\"companyName\":\"\",\"jwt\":\"\",\"theme\":\"LIGHT\",\"allowedCompanies\":[]}},\"projectUniqueId\":null,\"projectList\":[],\"ghostCompany\":{\"companyId\":\"handshake_construction\",\"name\":\"handshake_construction\"},\"projectIdentifier\":null,\"projectDetails\":null,\"projectData\":null,\"selectedFeatures\":null,\"ttCardName\":\"\",\"ttCardType\":\"\",\"datasetCurve\":null,\"selectedCard\":null,\"currentPath\":null,\"clientProducts\":[{\"name\":\"Copilot\",\"id\":1,\"isOnboarded\":true},{\"id\":3,\"isOnboarded\":true,\"name\":\"AP Autopilot\"},{\"name\":\"PM Autopilot\",\"id\":6,\"isOnboarded\":true},{\"isOnboarded\":true,\"name\":\"Billings Autopilot\",\"id\":7},{\"isOnboarded\":true,\"name\":\"People Autopilot\",\"id\":8},{\"id\":9,\"isOnboarded\":true,\"name\":\"Analytics Autopilot\"}],\"currentUserRole\":{\"name\":\"Client Admin\",\"switch\":false},\"currentApp\":{\"id\":1,\"switch\":true},\"currentAppVersion\":\"v2\",\"sessionId\":\"ec6ae3f1-344b-4546-907d-b9e46616b827\",\"olderChat\":[],\"currentCoPilotAppVersion\":\"v2\",\"beforeRefreshAppVersion\":\"\"}"
+        }
+      ]
+    }
+  ]
+}
