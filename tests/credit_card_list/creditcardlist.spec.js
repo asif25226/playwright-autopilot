@@ -11,6 +11,7 @@ test.beforeEach(async ({ context }) => {
 // Runs before each test in this suite
 test.beforeEach(async ({ page }) => {
     await login(page, 'BriqDevCsv', 0); // Login before each test
+    
 });
 
 test('Credit card list Search Filter And new added CC', async ({ page }) => {
