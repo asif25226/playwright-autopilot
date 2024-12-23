@@ -1,16 +1,14 @@
 // @ts-check
 import fs from 'fs';
-const { test, expect } = require('@playwright/test');
-const { login } = require('./Methods/common');
+import { test, expect } from '@playwright/test';
+const { login } = require('../../Useful-folder/loginhelper');
 
 
-const { chromium } = require('@playwright/test');
+//const { chromium } = require('@playwright/test');
 test.beforeEach(async ({ page }) => {
-  await page.goto('https://app-dev.briq.com/#/pages/login');
-  await page.waitForTimeout(12000);
-  await login(page, 'dev');
-  
-});
+    await login(page, 'BriqDevCsv', 0); // Login before each test
+    });
+
 test('1.Navigate to folders Homepage', async({ page })=>{
     await page.click("//div[text()='Invoices ']");
     await page.waitForTimeout(12000);
@@ -87,13 +85,13 @@ test('7(a). . invoice with single line item', async ({ page }) => {
     const isVisible = await page.locator("//strong[normalize-space()='Import Files']").isVisible();
 
     if (isVisible) {
-      await page.getByLabel('Browse Files').setInputFiles('D:\\Briq\\PlaywrightAutopilet\\FilesToUpload\\handshake_construction_2024-Oct-30 10_10_10.pdf');
-      // await page.getByLabel('Browse Files').setInputFiles('D:\\Briq\\PlaywrightAutopilet\\FilesToUpload\\City of Glendale _2024-Jun-04 13_06_07.pdf');
+      await page.getByLabel('Browse Files').setInputFiles('D:\Briq Playwright Automation\Useful-folder\handshake_construction_2024-Oct-30 10_10_10.pdf');
+      // await page.getByLabel('Browse Files').setInputFiles('D:\Briq Playwright Automation\Useful-folder\City of Glendale _2024-Jun-04 13_06_07.pdf');
       console.log('file found  ');
     }else{
       await page.getByRole('button', { name: 'Import', exact: true }).click();
-      // await page.getByLabel('Browse Files').setInputFiles('D:\\Briq\\PlaywrightAutopilet\\FilesToUpload\\handshake_construction_2024-Oct-30 10_10_10.pdf');
-      await page.getByLabel('Browse Files').setInputFiles('D:\\Briq\\PlaywrightAutopilet\\FilesToUpload\\City of Glendale _2024-Jun-04 13_06_07.pdf');
+      await page.getByLabel('Browse Files').setInputFiles('D:\Briq Playwright Automation\Useful-folder\handshake_construction_2024-Oct-30 10_10_10.pdf');
+      //await page.getByLabel('Browse Files').setInputFiles('D:\Briq Playwright Automation\Useful-folder\City of Glendale _2024-Jun-04 13_06_07.pdf');
     }
     await page.getByRole('button', { name: 'Next' }).click();
     await page.getByText('Done').click();
@@ -107,13 +105,13 @@ test('7(b).  Invoice with multiple line items', async ({ page }) => {
   const isVisible = await page.locator("//strong[normalize-space()='Import Files']").isVisible();
 
   if (isVisible) {
-    await page.getByLabel('Browse Files').setInputFiles('D:\\Briq\\PlaywrightAutopilet\\FilesToUpload\\handshake_construction_2024-Oct-30 10_10_10.pdf');
-    // await page.getByLabel('Browse Files').setInputFiles('D:\\Briq\\PlaywrightAutopilet\\FilesToUpload\\City of Glendale _2024-Jun-04 13_06_07.pdf');
+    await page.getByLabel('Browse Files').setInputFiles('D:\Briq Playwright Automation\Useful-folder\handshake_construction_2024-Oct-30 10_10_10.pdf');
+    // await page.getByLabel('Browse Files').setInputFiles('D:\Briq Playwright Automation\Useful-folder\City of Glendale _2024-Jun-04 13_06_07.pdf');
     console.log('file found  ');
   }else{
     await page.getByRole('button', { name: 'Import', exact: true }).click();
-    // await page.getByLabel('Browse Files').setInputFiles('D:\\Briq\\PlaywrightAutopilet\\FilesToUpload\\handshake_construction_2024-Oct-30 10_10_10.pdf');
-    await page.getByLabel('Browse Files').setInputFiles('D:\\Briq\\PlaywrightAutopilet\\FilesToUpload\\City of Glendale _2024-Jun-04 13_06_07.pdf');
+    // await page.getByLabel('Browse Files').setInputFiles('D:\Briq Playwright Automation\Useful-folder\handshake_construction_2024-Oct-30 10_10_10.pdf');
+    await page.getByLabel('Browse Files').setInputFiles('D:\Briq Playwright Automation\Useful-folder\City of Glendale _2024-Jun-04 13_06_07.pdf');
   }
   await page.getByRole('button', { name: 'Next' }).click();
   await page.getByText('Done').click();
@@ -128,13 +126,13 @@ test('7(c). Invoice with vendor name detected', async ({ page }) => {
   const isVisible = await page.locator("//strong[normalize-space()='Import Files']").isVisible();
 
   if (isVisible) {
-    await page.getByLabel('Browse Files').setInputFiles('D:\\Briq\\PlaywrightAutopilet\\FilesToUpload\\handshake_construction_2024-Oct-30 10_10_10.pdf');
-    // await page.getByLabel('Browse Files').setInputFiles('D:\\Briq\\PlaywrightAutopilet\\FilesToUpload\\City of Glendale _2024-Jun-04 13_06_07.pdf');
+    await page.getByLabel('Browse Files').setInputFiles('D:\Briq Playwright Automation\Useful-folder\handshake_construction_2024-Oct-30 10_10_10.pdf');
+    // await page.getByLabel('Browse Files').setInputFiles('D:\Briq Playwright Automation\Useful-folder\City of Glendale _2024-Jun-04 13_06_07.pdf');
     console.log('file found  ');
   }else{
     await page.getByRole('button', { name: 'Import', exact: true }).click();
-    // await page.getByLabel('Browse Files').setInputFiles('D:\\Briq\\PlaywrightAutopilet\\FilesToUpload\\handshake_construction_2024-Oct-30 10_10_10.pdf');
-    await page.getByLabel('Browse Files').setInputFiles('D:\\Briq\\PlaywrightAutopilet\\FilesToUpload\\City of Glendale _2024-Jun-04 13_06_07.pdf');
+    // await page.getByLabel('Browse Files').setInputFiles('D:\Briq Playwright Automation\Useful-folder\handshake_construction_2024-Oct-30 10_10_10.pdf');
+    await page.getByLabel('Browse Files').setInputFiles('D:\Briq Playwright Automation\Useful-folder\City of Glendale _2024-Jun-04 13_06_07.pdf');
   }
   await page.getByRole('button', { name: 'Next' }).click();
   await page.getByText('Done').click();
@@ -149,13 +147,13 @@ test('7(d). Invoice with vendor name not detected  ', async ({ page }) => {
   const isVisible = await page.locator("//strong[normalize-space()='Import Files']").isVisible();
 
   if (isVisible) {
-    await page.getByLabel('Browse Files').setInputFiles('D:\\Briq\\PlaywrightAutopilet\\FilesToUpload\\handshake_construction_2024-Oct-30 10_10_10.pdf');
-    // await page.getByLabel('Browse Files').setInputFiles('D:\\Briq\\PlaywrightAutopilet\\FilesToUpload\\City of Glendale _2024-Jun-04 13_06_07.pdf');
+    await page.getByLabel('Browse Files').setInputFiles('D:\Briq Playwright Automation\Useful-folder\handshake_construction_2024-Oct-30 10_10_10.pdf');
+    // await page.getByLabel('Browse Files').setInputFiles('D:\Briq Playwright Automation\Useful-folder\City of Glendale _2024-Jun-04 13_06_07.pdf');
     console.log('file found  ');
   }else{
     await page.getByRole('button', { name: 'Import', exact: true }).click();
-    // await page.getByLabel('Browse Files').setInputFiles('D:\\Briq\\PlaywrightAutopilet\\FilesToUpload\\handshake_construction_2024-Oct-30 10_10_10.pdf');
-    await page.getByLabel('Browse Files').setInputFiles('D:\\Briq\\PlaywrightAutopilet\\FilesToUpload\\City of Glendale _2024-Jun-04 13_06_07.pdf');
+    // await page.getByLabel('Browse Files').setInputFiles('D:\Briq Playwright Automation\Useful-folder\handshake_construction_2024-Oct-30 10_10_10.pdf');
+    await page.getByLabel('Browse Files').setInputFiles('D:\Briq Playwright Automation\Useful-folder\City of Glendale _2024-Jun-04 13_06_07.pdf');
   }
   await page.getByRole('button', { name: 'Next' }).click();
   await page.getByText('Done').click();
@@ -170,13 +168,13 @@ test('7(e). Single page invoice ', async ({ page }) => {
   const isVisible = await page.locator("//strong[normalize-space()='Import Files']").isVisible();
 
   if (isVisible) {
-    await page.getByLabel('Browse Files').setInputFiles('D:\\Briq\\PlaywrightAutopilet\\FilesToUpload\\handshake_construction_2024-Oct-30 10_10_10.pdf');
-    // await page.getByLabel('Browse Files').setInputFiles('D:\\Briq\\PlaywrightAutopilet\\FilesToUpload\\City of Glendale _2024-Jun-04 13_06_07.pdf');
+    await page.getByLabel('Browse Files').setInputFiles('D:\Briq Playwright Automation\Useful-folder\handshake_construction_2024-Oct-30 10_10_10.pdf');
+    // await page.getByLabel('Browse Files').setInputFiles('D:\Briq Playwright Automation\Useful-folder\City of Glendale _2024-Jun-04 13_06_07.pdf');
     console.log('file found  ');
   }else{
     await page.getByRole('button', { name: 'Import', exact: true }).click();
-    // await page.getByLabel('Browse Files').setInputFiles('D:\\Briq\\PlaywrightAutopilet\\FilesToUpload\\handshake_construction_2024-Oct-30 10_10_10.pdf');
-    await page.getByLabel('Browse Files').setInputFiles('D:\\Briq\\PlaywrightAutopilet\\FilesToUpload\\City of Glendale _2024-Jun-04 13_06_07.pdf');
+    // await page.getByLabel('Browse Files').setInputFiles('D:\Briq Playwright Automation\Useful-folder\handshake_construction_2024-Oct-30 10_10_10.pdf');
+    await page.getByLabel('Browse Files').setInputFiles('D:\Briq Playwright Automation\Useful-folder\City of Glendale _2024-Jun-04 13_06_07.pdf');
   }
   await page.getByRole('button', { name: 'Next' }).click();
   await page.getByText('Done').click();
@@ -191,13 +189,13 @@ test('7(f). Multipage invoice with same invoice number  ', async ({ page }) => {
   const isVisible = await page.locator("//strong[normalize-space()='Import Files']").isVisible();
 
   if (isVisible) {
-    await page.getByLabel('Browse Files').setInputFiles('D:\\Briq\\PlaywrightAutopilet\\FilesToUpload\\handshake_construction_2024-Oct-30 10_10_10.pdf');
-    // await page.getByLabel('Browse Files').setInputFiles('D:\\Briq\\PlaywrightAutopilet\\FilesToUpload\\City of Glendale _2024-Jun-04 13_06_07.pdf');
+    await page.getByLabel('Browse Files').setInputFiles('D:\Briq Playwright Automation\Useful-folder\handshake_construction_2024-Oct-30 10_10_10.pdf');
+    // await page.getByLabel('Browse Files').setInputFiles('D:\Briq Playwright Automation\Useful-folder\City of Glendale _2024-Jun-04 13_06_07.pdf');
     console.log('file found  ');
   }else{
     await page.getByRole('button', { name: 'Import', exact: true }).click();
-    // await page.getByLabel('Browse Files').setInputFiles('D:\\Briq\\PlaywrightAutopilet\\FilesToUpload\\handshake_construction_2024-Oct-30 10_10_10.pdf');
-    await page.getByLabel('Browse Files').setInputFiles('D:\\Briq\\PlaywrightAutopilet\\FilesToUpload\\City of Glendale _2024-Jun-04 13_06_07.pdf');
+    // await page.getByLabel('Browse Files').setInputFiles('D:\Briq Playwright Automation\Useful-folder\handshake_construction_2024-Oct-30 10_10_10.pdf');
+    await page.getByLabel('Browse Files').setInputFiles('D:\Briq Playwright Automation\Useful-folder\City of Glendale _2024-Jun-04 13_06_07.pdf');
   }
   await page.getByRole('button', { name: 'Next' }).click();
   await page.getByText('Done').click();
@@ -212,13 +210,13 @@ test('7(g).Multipage invoice with different invoice number ', async ({ page }) =
   const isVisible = await page.locator("//strong[normalize-space()='Import Files']").isVisible();
 
   if (isVisible) {
-    await page.getByLabel('Browse Files').setInputFiles('D:\\Briq\\PlaywrightAutopilet\\FilesToUpload\\handshake_construction_2024-Oct-30 10_10_10.pdf');
-    // await page.getByLabel('Browse Files').setInputFiles('D:\\Briq\\PlaywrightAutopilet\\FilesToUpload\\City of Glendale _2024-Jun-04 13_06_07.pdf');
+    await page.getByLabel('Browse Files').setInputFiles('D:\Briq Playwright Automation\Useful-folder\handshake_construction_2024-Oct-30 10_10_10.pdf');
+    // await page.getByLabel('Browse Files').setInputFiles('D:\Briq Playwright Automation\Useful-folder\City of Glendale _2024-Jun-04 13_06_07.pdf');
     console.log('file found  ');
   }else{
     await page.getByRole('button', { name: 'Import', exact: true }).click();
-    // await page.getByLabel('Browse Files').setInputFiles('D:\\Briq\\PlaywrightAutopilet\\FilesToUpload\\handshake_construction_2024-Oct-30 10_10_10.pdf');
-    await page.getByLabel('Browse Files').setInputFiles('D:\\Briq\\PlaywrightAutopilet\\FilesToUpload\\City of Glendale _2024-Jun-04 13_06_07.pdf');
+    // await page.getByLabel('Browse Files').setInputFiles('D:\Briq Playwright Automation\Useful-folder\handshake_construction_2024-Oct-30 10_10_10.pdf');
+    await page.getByLabel('Browse Files').setInputFiles('D:\Briq Playwright Automation\Useful-folder\City of Glendale _2024-Jun-04 13_06_07.pdf');
   }
   await page.getByRole('button', { name: 'Next' }).click();
   await page.getByText('Done').click();
